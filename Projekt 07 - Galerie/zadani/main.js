@@ -49,5 +49,54 @@ let obrazky = [
     'ovce.jpg',
     'pes.jpg',
     'sova.jpg',
-    'zajic.jpg'
+    'zajic.jpg',
 ];
+
+
+let obrazek = document.querySelector("#foto")
+let sipkaVpravo = document.querySelector("#sipkaPrava")
+let sipkaVlevo = document.querySelector("#sipkaLeva")
+let pocitadlo = document.querySelector("#pocitadlo")
+
+
+sipkaVlevo.addEventListener("click", obrazekDoleva)
+sipkaVpravo.addEventListener("click", obrazekDoprava)
+
+
+let imageCnt = 0;
+
+
+
+function obrazekDoleva(event) {
+    if (imageCnt > 0) {
+        imageCnt = imageCnt - 1;
+        pocitadlo.textContent = obrazky[imageCnt] + " " + (imageCnt + 1) + "/" + obrazky.length
+        sipkaVpravo.src = "obrazky/" + obrazky[imageCnt + 1]
+        sipkaVlevo.src = "obrazky/" + obrazky[imageCnt - 1]
+    } else {
+        imageCnt = obrazky.length - 1
+        pocitadlo.textContent = obrazky[imageCnt] + " " + (imageCnt + 1) + "/" + obrazky.length
+        sipkaVpravo.src = "obrazky/" + obrazky[obrazky.length - obrazky.length]
+        sipkaVlevo.src = "obrazky/" + obrazky[imageCnt - 1]
+    }
+   obrazek.src = "obrazky/" + obrazky[imageCnt]
+}
+
+obrazekDoleva()
+
+function obrazekDoprava(event) {
+    if (imageCnt < obrazky.length - 1) {
+        imageCnt = imageCnt + 1
+        pocitadlo.textContent = obrazky[imageCnt] + " " + (imageCnt + 1) + "/" + obrazky.length
+        sipkaVpravo.src = "obrazky/" + obrazky[imageCnt + 1]
+        sipkaVlevo.src = "obrazky/" + obrazky[imageCnt - 1]
+    } else {
+        imageCnt = 0
+        pocitadlo.textContent = obrazky[imageCnt] + " " + (imageCnt + 1) + "/" + obrazky.length
+        sipkaVpravo.src = "obrazky/" + obrazky[imageCnt + 1]
+        sipkaVlevo.src = "obrazky/" + obrazky[obrazky.length - 1]
+    }
+   obrazek.src = "obrazky/" + obrazky[imageCnt]
+}
+
+obrazekDoprava()
