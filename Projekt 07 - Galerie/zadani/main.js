@@ -65,6 +65,14 @@ sipkaVpravo.addEventListener("click", obrazekDoprava)
 
 let imageCnt = 0;
 
+function prvniObrazek() {
+    pocitadlo.textContent = obrazky[imageCnt] + " " + (imageCnt + 1) + "/" + obrazky.length
+    obrazek.src = "obrazky/" + obrazky[imageCnt]
+    sipkaVpravo.src = "obrazky/" + obrazky[imageCnt + 1]
+    sipkaVlevo.src = "obrazky/" + obrazky[obrazky.length - 1]
+}
+
+prvniObrazek()
 
 
 function obrazekDoleva(event) {
@@ -73,30 +81,33 @@ function obrazekDoleva(event) {
         pocitadlo.textContent = obrazky[imageCnt] + " " + (imageCnt + 1) + "/" + obrazky.length
         sipkaVpravo.src = "obrazky/" + obrazky[imageCnt + 1]
         sipkaVlevo.src = "obrazky/" + obrazky[imageCnt - 1]
+        if (imageCnt === 0) {
+            sipkaVlevo.src = "obrazky/" + obrazky[obrazky.length - 1]
+        }
     } else {
         imageCnt = obrazky.length - 1
         pocitadlo.textContent = obrazky[imageCnt] + " " + (imageCnt + 1) + "/" + obrazky.length
         sipkaVpravo.src = "obrazky/" + obrazky[obrazky.length - obrazky.length]
         sipkaVlevo.src = "obrazky/" + obrazky[imageCnt - 1]
     }
-   obrazek.src = "obrazky/" + obrazky[imageCnt]
+    obrazek.src = "obrazky/" + obrazky[imageCnt]
 }
-
-obrazekDoleva()
 
 function obrazekDoprava(event) {
     if (imageCnt < obrazky.length - 1) {
         imageCnt = imageCnt + 1
         pocitadlo.textContent = obrazky[imageCnt] + " " + (imageCnt + 1) + "/" + obrazky.length
-        sipkaVpravo.src = "obrazky/" + obrazky[imageCnt + 1]
         sipkaVlevo.src = "obrazky/" + obrazky[imageCnt - 1]
+        sipkaVpravo.src = "obrazky/" + obrazky[imageCnt + 1]
+        if (imageCnt === obrazky.length - 1) {
+            sipkaVpravo.src = "obrazky/" + obrazky[obrazky.length - obrazky.length]
+        }
     } else {
         imageCnt = 0
         pocitadlo.textContent = obrazky[imageCnt] + " " + (imageCnt + 1) + "/" + obrazky.length
         sipkaVpravo.src = "obrazky/" + obrazky[imageCnt + 1]
         sipkaVlevo.src = "obrazky/" + obrazky[obrazky.length - 1]
     }
-   obrazek.src = "obrazky/" + obrazky[imageCnt]
+    obrazek.src = "obrazky/" + obrazky[imageCnt]
 }
 
-obrazekDoprava()
