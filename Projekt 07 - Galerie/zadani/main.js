@@ -65,7 +65,7 @@ sipkaVlevo.addEventListener("click", obrazekDoleva)
 sipkaVpravo.addEventListener("click", obrazekDoprava)
 document.addEventListener ("keydown", stiskKlavesy)
 
-/*---Nacteni uvodniho obrazky---*/
+//Nacteni uvodniho obrazky
 
 let imageCnt = 0
 
@@ -78,7 +78,7 @@ function prvniObrazek() {
 
 prvniObrazek()
 
-/*---pohyb pomoci klikani na obrazkove sipky---*/
+//pohyb pomoci klikani na obrazkove sipky
 
 function obrazekDoleva() {
     if (imageCnt-- > 0) {
@@ -116,9 +116,9 @@ function obrazekDoprava() {
     obrazek.src = "obrazky/" + obrazky[imageCnt]
 }
 
-/*---zmena obrazku pomoci stisku sipek---*/
+//zmena obrazku pomoci stisku sipek
 
-/*---Dotaz!!! Snazila jsem se ty stisky klavesy pridat do funkci vyse, ale nejak mi to nefungovalo (mozna se mi to zdalo i slozitejsi, ze bych musela osetrit stisky jinych klaves ktere mi spadali do "else"). Navic se mi ani nelibi, ze by to vsechno bylo uz tak moc "nacpane". Dotaz tedy zni jestli nevadi, ze to takhle davam do dalsi fuknce? Dekuji---*/
+/*---Dotaz!!! Snazila jsem se ty stisky klavesy pridat do funkci vyse, ale nejak mi to nefungovalo (mozna se mi to zdalo i slozitejsi, ze bych musela osetrit stisky jinych klaves ktere mi spadaly do "else"). Navic se mi ani nelibi, ze by to vsechno bylo uz tak moc "nacpane". Dotaz tedy zni jestli nevadi, ze to takhle davam do dalsi funkce? Dekuji---*/
 
 function stiskKlavesy(event) {
     
@@ -133,3 +133,5 @@ function stiskKlavesy(event) {
  }
 
 
+
+/*---Doplnila jsem ukoly co jsi navrhnul, jen mam ted jeste dva dotazy na radku 62 a 121. Stredniky jsem se snazila vymazat kde to slo - budu si to urcite vice hlidat, diky ale za dalsi upozorneni 😅. Az budu mit trochu casu navic, jeste zkusim doplnit ten posledni bonusovy ukol, jen musis  vymyslet, jak tam obrazky nahrat - ale to mi chvilku jeste zabere. Diky moc za vsechno ! ---*/
