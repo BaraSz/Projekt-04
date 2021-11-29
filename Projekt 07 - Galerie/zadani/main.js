@@ -50,20 +50,24 @@ let obrazky = [
     'pes.jpg',
     'sova.jpg',
     'zajic.jpg',
-];
+]
 
 
 let obrazek = document.querySelector("#foto")
 let sipkaVpravo = document.querySelector("#sipkaPrava")
 let sipkaVlevo = document.querySelector("#sipkaLeva")
 let pocitadlo = document.querySelector("#pocitadlo")
+let prouzekObrazku = document.querySelector("#prouzek")
 
+/*---!!! Dotaz - Chtela bych se zeptat - v nektere predchozi lekci jsem narazila na to, ze eventListener by se mely psat az za funkce, jinak muze byt problem s jejich nactenim, prtz se funkce cte az potom .... me to vlastne az do ted nedelalo problem, tak se chci zeptat pro jistotu jeste jednou - jestli je to lepsi mit takto pokupe nebo lepe to psat vzdy ya danou funkci? Dekuji ---*/
 
 sipkaVlevo.addEventListener("click", obrazekDoleva)
 sipkaVpravo.addEventListener("click", obrazekDoprava)
+document.addEventListener ("keydown", stiskKlavesy)
 
+/*---Nacteni uvodniho obrazky---*/
 
-let imageCnt = 0;
+let imageCnt = 0
 
 function prvniObrazek() {
     pocitadlo.textContent = obrazky[imageCnt] + " " + (imageCnt + 1) + "/" + obrazky.length
@@ -74,10 +78,11 @@ function prvniObrazek() {
 
 prvniObrazek()
 
+/*---pohyb pomoci klikani na obrazkove sipky---*/
 
-function obrazekDoleva(event) {
-    if (imageCnt > 0) {
-        imageCnt = imageCnt - 1;
+function obrazekDoleva() {
+    if (imageCnt-- > 0) {
+        //imageCnt = imageCnt - 1;
         pocitadlo.textContent = obrazky[imageCnt] + " " + (imageCnt + 1) + "/" + obrazky.length
         sipkaVpravo.src = "obrazky/" + obrazky[imageCnt + 1]
         sipkaVlevo.src = "obrazky/" + obrazky[imageCnt - 1]
@@ -93,13 +98,13 @@ function obrazekDoleva(event) {
     obrazek.src = "obrazky/" + obrazky[imageCnt]
 }
 
-function obrazekDoprava(event) {
-    if (imageCnt < obrazky.length - 1) {
-        imageCnt = imageCnt + 1
+function obrazekDoprava() {
+     if (imageCnt++ < obrazky.length - 1) {
+        //  imageCnt = imageCnt + 1
         pocitadlo.textContent = obrazky[imageCnt] + " " + (imageCnt + 1) + "/" + obrazky.length
         sipkaVlevo.src = "obrazky/" + obrazky[imageCnt - 1]
         sipkaVpravo.src = "obrazky/" + obrazky[imageCnt + 1]
-        if (imageCnt === obrazky.length - 1) {
+        if (imageCnt === obrazky.length - 1 ) {
             sipkaVpravo.src = "obrazky/" + obrazky[obrazky.length - obrazky.length]
         }
     } else {
@@ -110,4 +115,21 @@ function obrazekDoprava(event) {
     }
     obrazek.src = "obrazky/" + obrazky[imageCnt]
 }
+
+/*---zmena obrazku pomoci stisku sipek---*/
+
+/*---Dotaz!!! Snazila jsem se ty stisky klavesy pridat do funkci vyse, ale nejak mi to nefungovalo (mozna se mi to zdalo i slozitejsi, ze bych musela osetrit stisky jinych klaves ktere mi spadali do "else"). Navic se mi ani nelibi, ze by to vsechno bylo uz tak moc "nacpane". Dotaz tedy zni jestli nevadi, ze to takhle davam do dalsi fuknce? Dekuji---*/
+
+function stiskKlavesy(event) {
+    
+    let stiskKlavesy = event.key
+ 
+     if (stiskKlavesy === "ArrowRight") {
+         obrazekDoprava()
+     } 
+     else if (stiskKlavesy === "ArrowLeft") {
+         obrazekDoleva()
+     }    
+ }
+
 
